@@ -1,0 +1,1 @@
+# wadai-generator
