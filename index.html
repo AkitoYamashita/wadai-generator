@@ -346,36 +346,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Wadai-Generator</h1>
-    <section style="position: relative;">
-      <div style="display: flex;">
+    <h1 style="margin-bottom: 0;;">Wadai-Generator</h1>
+    <section style="position: relative">
+      <div style="display: flex; flex-wrap: wrap">
         <div class="width:348px;">
-            <div style=" position: absolute;top: 155px;left: 140px;z-index: 100;">
-                <button class="rnd" id="rollRnd" type="button">スタート</button>
-              </div>
-              <ul id="roulette">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-        </div>
-        <div class="flex:1;">
-            <div
-            id="target"
-            style="border: 1px solid gray; padding: 20px; margin: 20px"
+          <div
+            style="position: absolute; top: 137px; left: 140px; z-index: 100"
           >
-            target
+            <button id="roll" type="button" style="border-radius: 50%;height:65px;">スタート</button>
           </div>
+          <ul id="roulette">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+        <div style="border: 1px solid gray; padding: 20px; margin: 20px">
+          <div id="target" style="margin-bottom: 10px">target</div>
+          <button id="random" type="button">ランダム</button>
         </div>
       </div>
-      
     </section>
     <script>
       function render(array) {
@@ -403,15 +400,16 @@
           "将来の夢、目標",
           "今日、身の回りに起きたトピックス",
           "ペットの話",
-          "大学",
-          "SNS、番組、YouTubeの話",
+          "大学・学校",
+          "SNS、動画、YouTubeの話",
           "好きな食べ物",
           "よく遊ぶ場所",
           "子どもの頃の思い出",
           "最近面白かったこと",
           "過去の失敗談",
-          "お互いの持ち物",
+          "持ち物",
           "行ってみたい場所の話",
+          "ゲームの話",
           "ファッション",
           "時事ニュース",
           "どっち派か",
@@ -423,11 +421,14 @@
           "やってみたいこと",
           "あだ名や呼び名についての話",
         ];
-        $("#rollRnd").on("click", function () {
-          render(select10(array));
+        render(select10(array));
+        $("#roll").on("click", function () {
           $("#roulette")
             .removeAttr("class")
             .addClass(`number-${1 + Math.round(Math.random() * 9)}`);
+        });
+        $("#random").on("click", function () {
+          render(select10(array));
         });
       })();
     </script>
