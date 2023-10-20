@@ -1,0 +1,435 @@
+<html>
+  <head>
+    <title>WadaiGenerator</title>
+    <style>
+      h1 {
+        font-style: italic;
+      }
+      .controller {
+        position: relative;
+        margin: 10px;
+      }
+      .controller button {
+        line-height: 30px;
+      }
+      .controller .num {
+        width: 30px;
+      }
+      #roulette {
+        position: relative;
+        -webkit-animation-timing-function: cubic-bezier(0, 0.4, 0.4, 1.04);
+        animation-timing-function: cubic-bezier(0, 0.4, 0.4, 1.04);
+        -webkit-animation-duration: 1.8s;
+        animation-duration: 1.8s;
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        width: 308px;
+        height: 308px;
+        border-radius: 50%;
+        overflow: hidden;
+        counter-reset: num;
+      }
+      #roulette.number-1 {
+        -webkit-animation-name: "number-1";
+        animation-name: "number-1";
+      }
+      #roulette.number-2 {
+        -webkit-animation-name: "number-2";
+        animation-name: "number-2";
+      }
+      #roulette.number-3 {
+        -webkit-animation-name: "number-3";
+        animation-name: "number-3";
+      }
+      #roulette.number-4 {
+        -webkit-animation-name: "number-4";
+        animation-name: "number-4";
+      }
+      #roulette.number-5 {
+        -webkit-animation-name: "number-5";
+        animation-name: "number-5";
+      }
+      #roulette.number-6 {
+        -webkit-animation-name: "number-6";
+        animation-name: "number-6";
+      }
+      #roulette.number-7 {
+        -webkit-animation-name: "number-7";
+        animation-name: "number-7";
+      }
+      #roulette.number-8 {
+        -webkit-animation-name: "number-8";
+        animation-name: "number-8";
+      }
+      #roulette.number-9 {
+        -webkit-animation-name: "number-9";
+        animation-name: "number-9";
+      }
+      #roulette.number-10 {
+        -webkit-animation-name: "number-10";
+        animation-name: "number-10";
+      }
+      #roulette::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+      }
+      #roulette li {
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        display: block;
+        width: 100px;
+        height: 154px;
+        transform-origin: 50px 154px;
+      }
+      #roulette li::before {
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 154px 50px;
+        z-index: 0;
+      }
+      #roulette li::after {
+        counter-increment: num;
+        content: counter(num);
+        filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
+        z-index: 5;
+        position: absolute;
+        display: block;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 26px;
+        color: #fff;
+        font-weight: bold;
+      }
+      #roulette li:nth-of-type(1) {
+        transform: rotate(36deg);
+      }
+      #roulette li:nth-of-type(1)::before {
+        border-color: #fff100 transparent transparent;
+      }
+      #roulette li:nth-of-type(2) {
+        transform: rotate(72deg);
+      }
+      #roulette li:nth-of-type(2)::before {
+        border-color: #f39800 transparent transparent;
+      }
+      #roulette li:nth-of-type(3) {
+        transform: rotate(108deg);
+      }
+      #roulette li:nth-of-type(3)::before {
+        border-color: #eb6100 transparent transparent;
+      }
+      #roulette li:nth-of-type(4) {
+        transform: rotate(144deg);
+      }
+      #roulette li:nth-of-type(4)::before {
+        border-color: #e60012 transparent transparent;
+      }
+      #roulette li:nth-of-type(5) {
+        transform: rotate(180deg);
+      }
+      #roulette li:nth-of-type(5)::before {
+        border-color: #e4007f transparent transparent;
+      }
+      #roulette li:nth-of-type(6) {
+        transform: rotate(216deg);
+      }
+      #roulette li:nth-of-type(6)::before {
+        border-color: #601986 transparent transparent;
+      }
+      #roulette li:nth-of-type(7) {
+        transform: rotate(252deg);
+      }
+      #roulette li:nth-of-type(7)::before {
+        border-color: #0b318f transparent transparent;
+      }
+      #roulette li:nth-of-type(8) {
+        transform: rotate(288deg);
+      }
+      #roulette li:nth-of-type(8)::before {
+        border-color: #036eb8 transparent transparent;
+      }
+      #roulette li:nth-of-type(9) {
+        transform: rotate(324deg);
+      }
+      #roulette li:nth-of-type(9)::before {
+        border-color: #00913a transparent transparent;
+      }
+      #roulette li:nth-of-type(10) {
+        transform: rotate(360deg);
+      }
+      #roulette li:nth-of-type(10)::before {
+        border-color: #8fc31f transparent transparent;
+      }
+      @-webkit-keyframes number-1 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3204deg);
+        }
+      }
+      @keyframes number-1 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3204deg);
+        }
+      }
+      @-webkit-keyframes number-2 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3168deg);
+        }
+      }
+      @keyframes number-2 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3168deg);
+        }
+      }
+      @-webkit-keyframes number-3 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3132deg);
+        }
+      }
+      @keyframes number-3 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3132deg);
+        }
+      }
+      @-webkit-keyframes number-4 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3096deg);
+        }
+      }
+      @keyframes number-4 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3096deg);
+        }
+      }
+      @-webkit-keyframes number-5 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3060deg);
+        }
+      }
+      @keyframes number-5 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3060deg);
+        }
+      }
+      @-webkit-keyframes number-6 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3024deg);
+        }
+      }
+      @keyframes number-6 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(3024deg);
+        }
+      }
+      @-webkit-keyframes number-7 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2988deg);
+        }
+      }
+      @keyframes number-7 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2988deg);
+        }
+      }
+      @-webkit-keyframes number-8 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2952deg);
+        }
+      }
+      @keyframes number-8 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2952deg);
+        }
+      }
+      @-webkit-keyframes number-9 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2916deg);
+        }
+      }
+      @keyframes number-9 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2916deg);
+        }
+      }
+      @-webkit-keyframes number-10 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2880deg);
+        }
+      }
+      @keyframes number-10 {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(2880deg);
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Wadai-Generator</h1>
+    <section style="position: relative;">
+      <div style="display: flex;">
+        <div class="width:348px;">
+            <div style=" position: absolute;top: 155px;left: 140px;z-index: 100;">
+                <button class="rnd" id="rollRnd" type="button">スタート</button>
+              </div>
+              <ul id="roulette">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+        </div>
+        <div class="flex:1;">
+            <div
+            id="target"
+            style="border: 1px solid gray; padding: 20px; margin: 20px"
+          >
+            target
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <script>
+      function render(array) {
+        document.getElementById("target").innerHTML = "";
+        array.forEach((element, index) => {
+          let div = document.createElement("div");
+          div.innerHTML = `${index + 1}:${element}`;
+          document.getElementById("target").appendChild(div);
+        });
+      }
+      function select10(array) {
+        return array
+          .slice()
+          .sort(function () {
+            return Math.random() - 0.5;
+          })
+          .slice(0, 10);
+      }
+      (function () {
+        let array = [
+          "天気・季節",
+          "住んでいる場所",
+          "出身地",
+          "趣味",
+          "将来の夢、目標",
+          "今日、身の回りに起きたトピックス",
+          "ペットの話",
+          "大学",
+          "SNS、番組、YouTubeの話",
+          "好きな食べ物",
+          "よく遊ぶ場所",
+          "子どもの頃の思い出",
+          "最近面白かったこと",
+          "過去の失敗談",
+          "お互いの持ち物",
+          "行ってみたい場所の話",
+          "ファッション",
+          "時事ニュース",
+          "どっち派か",
+          "血液型",
+          "お酒を飲む・飲まない",
+          "休日の過ごし方",
+          "「もしも〇〇だったら」の話",
+          "心理テスト、占い",
+          "やってみたいこと",
+          "あだ名や呼び名についての話",
+        ];
+        $("#rollRnd").on("click", function () {
+          render(select10(array));
+          $("#roulette")
+            .removeAttr("class")
+            .addClass(`number-${1 + Math.round(Math.random() * 9)}`);
+        });
+      })();
+    </script>
+  </body>
+</html>
